@@ -115,7 +115,7 @@ func registerSubmit(c *gin.Context) {
 							  VALUES (?,        ?,             ?,            '',   ?,     ?,                 ?,          2);`,
 		username, safeUsername(username), pass, c.PostForm("email"), time.Now().Unix(), common.UserPrivilegePendingVerification)
 	if err != nil {
-		registerResp(c, errorMessage{T(c, "Whoops, an error slipped in. You might have been registered, though. I don't know.")})
+		registerResp(c, errorMessage{T(c, err.Error())})//"Whoops, an error slipped in. You might have been registered, though. I don't know.")})
 		return
 	}
 	lid, _ := res.LastInsertId()

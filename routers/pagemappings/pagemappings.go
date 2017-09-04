@@ -46,7 +46,7 @@ var pageMappings = map[int]interface{}{
 	31: "/beatmaps/rank_request",
 	32: "/dev/applications",
 	33: "/dev/applications", // Theorically, this should be something like /dev/applications/<id>, but no-one ever used that page so who gives a fuck.
-	34: "/donate",
+	34: "/",
 	35: "/team",
 	36: "/irc",
 	37: "/beatmaps",

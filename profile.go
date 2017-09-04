@@ -5,7 +5,6 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"zxq.co/ripple/rippleapi/common"
 )
 
 // TODO: replace with simple ResponseInfo containing userid
@@ -54,20 +53,20 @@ func userProfile(c *gin.Context) {
 		return
 	}
 
-	if common.UserPrivileges(privileges)&common.UserPrivilegeDonor > 0 {
-		var profileBackground struct {
-			Type  int
-			Value string
-		}
-		db.Get(&profileBackground, "SELECT type, value FROM profile_backgrounds WHERE uid = ?", data.UserID)
-		switch profileBackground.Type {
+	var profileBackground struct {
+		Type  int
+		Value string
+	}
+
+	db.Get(&profileBackground, "SELECT type, value FROM profile_backgrounds WHERE uid = ?", data.UserID)
+	switch profileBackground.Type {
 		case 1:
 			data.KyutGrill = "/static/profbackgrounds/" + profileBackground.Value
 			data.KyutGrillAbsolute = true
 		case 2:
 			data.SolidColour = profileBackground.Value
-		}
 	}
+
 
 	data.TitleBar = T(c, "%s's profile", username)
 	data.DisableHH = true

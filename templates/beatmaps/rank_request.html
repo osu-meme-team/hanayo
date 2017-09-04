@@ -9,7 +9,7 @@ MinPrivileges=2
 <div class="ui container">
 	<div class="ui raised segment center aligned">
 		{{ $f := ieForm .Gin }}
-		<h4>{{ .T "Want to play an unranked beatmap and get pp? You can submit beatmaps rank requests here!" }}</h4>
+		<h4>{{ .T "Want to play an unranked beatmap and get pp? You can submit beatmaps rank requests here! Please don't request jump/stream practice/training maps or anything absurd and unrankable." }}</h4>
 		{{ with .Get "beatmaps/rank_requests/status" }}
 			<h4 class="ui horizontal divider header">
 				<i class="wait icon"></i>
